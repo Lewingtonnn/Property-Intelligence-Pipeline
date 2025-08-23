@@ -1,0 +1,21 @@
+2025-08-23 23:00:14,445 - __main__ - INFO - Prometheus HTTP server started.
+2025-08-23 23:00:14,675 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-23 23:00:22,351 - __main__ - INFO - Starting SQS consumer...
+2025-08-23 23:00:42,871 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/longwood-row-boston-ma/kp71r5c/
+2025-08-23 23:00:42,872 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/longwood-row-boston-ma/kp71r5c/
+2025-08-23 23:00:49,850 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/longwood-row-boston-ma/kp71r5c/
+2025-08-23 23:11:32,612 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/longwood-row-boston-ma/kp71r5c/ with status: Success
+2025-08-23 23:11:33,540 - __main__ - INFO - Successfully scraped and validated data for https://www.apartments.com/longwood-row-boston-ma/kp71r5c/.
+2025-08-23 23:11:33,646 - root - INFO - Starting to save 1 properties to the database...
+2025-08-23 23:11:52,125 - root - INFO - Updating existing property: Longwood Row
+2025-08-23 23:11:54,024 - root - INFO - Successfully processed and committed property: https://www.apartments.com/longwood-row-boston-ma/kp71r5c/
+2025-08-23 23:11:59,202 - __main__ - INFO - Successfully deleted message for https://www.apartments.com/longwood-row-boston-ma/kp71r5c/ from queue.
+2025-08-23 23:12:29,801 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/proto-kendall-square-cambridge-ma/wvwfs4l/
+2025-08-23 23:12:29,852 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/proto-kendall-square-cambridge-ma/wvwfs4l/
+2025-08-23 23:12:39,659 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/proto-kendall-square-cambridge-ma/wvwfs4l/
+2025-08-23 23:26:19,186 - asyncio - ERROR - Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed\nCall log:\n  - waiting for locator("li.unitContainer").nth(12).locator(".rentLabel")\n')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("li.unitContainer").nth(12).locator(".rentLabel")
+

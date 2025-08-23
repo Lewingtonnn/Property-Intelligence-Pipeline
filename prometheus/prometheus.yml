@@ -1,0 +1,19 @@
+#global settings for prometheus
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+#scrape configurations : Define what Prometheus should scrap
+scrape_configs:
+  - job_name: 'fastapi_app'
+    static_configs:
+      - targets: ['host.docker.internal:8000']
+        labels:
+          application: 'real_estate_api'
+    metrics_path: /metrics
+
+  - job_name: 'Data_Extraction'
+    static_configs:
+      - targets: ['host.docker.internal:8001']
+        labels:
+          application : 'Data_extraction service'
