@@ -23,6 +23,8 @@ Defined in `metrics.py`:
 - Scrape interval: 15s
 
 ---
+![Prometheus Dashboard](images/prometheus.jpg)
+
 
 ## 📈 Grafana
 - Pre-provisioned data source (Prometheus).
@@ -32,7 +34,7 @@ Defined in `metrics.py`:
   - DB inserts
   - Resource usage
 
-![Grafana Dashboard](images/grafana-dashboard.png)
+![Grafana Dashboard](images/grafana.jpg)
 
 ---
 

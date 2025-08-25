@@ -1,7 +1,10 @@
 site_name: Property Intelligence Pipeline
 site_description: Enterprise-grade Real Estate Data Extraction, Analytics & Prediction
 site_author: Lewis
-site_url: https://Lewingtonnn.github.io/property-pipeline/
+site_url: https://Lewingtonnn.github.io/Property-Intelligence-Pipeline/
+use_directory_urls: true
+
+docs_dir: docs
 
 repo_name: Lewingtonnn/property-pipeline
 repo_url: https://github.com/Lewingtonnn/property-pipeline
@@ -47,5 +50,13 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.emoji
 
+
+
+extra:
+  generator: false
+
 plugins:
   - search
+
+extra_javascript:
+  - https://unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js
