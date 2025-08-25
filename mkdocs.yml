@@ -1,33 +1,43 @@
+# Project Information
 site_name: Property Intelligence Pipeline
 site_description: Enterprise-grade Real Estate Data Extraction, Analytics & Prediction
-site_author: Lewis
+site_author: Lewis Githua
 site_url: https://Lewingtonnn.github.io/Property-Intelligence-Pipeline/
 use_directory_urls: true
 
+# Documentation & Repository
 docs_dir: docs
+repo_name: Lewingtonnn/Property-Intelligence-Pipeline
+repo_url: https://github.com/Lewingtonnn/Property-Intelligence-Pipeline
 
-repo_name: Lewingtonnn/property-pipeline
-repo_url: https://github.com/Lewingtonnn/property-pipeline
-
+# Theme & Features
 theme:
   name: material
   features:
+    - content.code.copy
+    - content.code.select
+    - navigation.instant
     - navigation.tabs
     - navigation.top
-    - content.code.copy
-    - search.suggest
+    - navigation.tracking
     - search.highlight
+    - search.suggest
+  
   palette:
     - scheme: default
-      primary: indigo
-      accent: blue
-    - scheme: slate
       primary: indigo
       accent: blue
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
 
+# Navigation
 nav:
   - Home: Index.md
   - System Architecture: architecture.md
@@ -39,24 +49,43 @@ nav:
   - Operations: operations.md
   - Roadmap: roadmap.md
 
+# Markdown Extensions
 markdown_extensions:
   - admonition
-  - codehilite
+  - codehilite:
+      guess_lang: true
   - footnotes
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - toc:
       permalink: true
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.tasklist
-  - pymdownx.emoji
+      toc_depth: 3
 
-
-
-extra:
-  generator: false
-
+# Plugins
 plugins:
-  - search
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]{}()&"/\\]+'
 
-extra_javascript:
-  - https://unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js
+# Extra Configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Lewingtonnn
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/lewis-githua
+  
+  generator: false
+  copyright: "© 2025 Lewis Githua"
+  announcement:
+    type: primary
+    text: "🚀 Enterprise-grade data pipeline built for real estate intelligence."
