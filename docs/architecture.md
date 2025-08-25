@@ -16,13 +16,13 @@ The Property Intelligence Pipeline is based on a **Producer–Consumer model**, 
 ## 📊 Diagrams
 
 ### High-Level Overview
-![Architecture Overview](images/architecture-overview.png)
+![Architecture Overview](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/whole_architecture.jpg)
 
 ### System Flow
-![System Flow](images/system-flow.png)
+![System Flow](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/architecture.jpg)
 
 ### ML Pipeline
-![ML Pipeline](images/ml-pipeline.png)
+![ML Pipeline](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/machine_learning.jpg)
 
-### Observability Stack
-![Observability](images/observability.png)
+### FastAPI flow
+![FastAPI FLOW](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/fastAPI.jpg)
