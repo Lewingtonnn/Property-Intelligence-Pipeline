@@ -311,3 +311,20 @@ playwright._impl._errors.TargetClosedError: Locator.count: Target page, context 
 2025-08-25 12:38:09,457 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/
 2025-08-25 12:38:23,395 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/
 2025-08-25 12:38:23,509 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/
+2025-08-25 13:01:06,626 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/ with status: Success
+2025-08-25 13:01:07,650 - __main__ - INFO - Scrape OK: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/ — persisting to DB
+2025-08-25 13:01:07,671 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 13:01:21,652 - root - INFO - Updating existing property: 1410 Columbia
+2025-08-25 13:01:25,705 - root - INFO - Successfully processed and committed property: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/
+2025-08-25 13:01:25,706 - __main__ - INFO - Persisted.
+2025-08-25 13:01:28,673 - __main__ - INFO - Deleted message for https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/
+2025-08-25 13:05:13,257 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/ with status: Success
+2025-08-25 13:05:13,413 - __main__ - INFO - Scrape OK: https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/ — persisting to DB
+2025-08-25 13:05:13,413 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 13:05:14,045 - root - INFO - Inserting new property: One Canal Apartments
+2025-08-25 13:05:15,377 - root - INFO - Successfully processed and committed property: https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/
+2025-08-25 13:05:15,378 - __main__ - INFO - Persisted.
+2025-08-25 13:05:16,494 - __main__ - INFO - Deleted message for https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/
+2025-08-25 13:05:20,367 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
+2025-08-25 13:05:20,382 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
+2025-08-25 13:05:23,656 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
