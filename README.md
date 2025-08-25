@@ -1,7 +1,7 @@
 # 🏡 Property Intelligence Pipeline
 **Enterprise-Grade Real Estate Data Extraction, Analytics & Prediction**
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/YourUser/Property-Intelligence-Pipeline/deploy.yml?branch=master)](https://github.com/YourUser/Property-Intelligence-Pipeline/actions)  
+
 [![Docker](https://img.shields.io/badge/docker-ready-blue)](https://www.docker.com/)  
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -23,7 +23,7 @@ It is designed for:
 
 ## 🏗️ System Architecture
 
-![System Architecture](docs/images/architecture-overview.png)
+![System Architecture](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/whole_architecture.jpg)
 
 **Core Flow:**  
 Producer → SQS Queue → Consumer → PostgreSQL → FastAPI → Grafana/Prometheus → ML Pipeline  
@@ -73,6 +73,8 @@ docker-compose up --build
 | `/analytics/top/{x}/most-affordable` | Cheapest floor plans                 |
 | `/predict/rent`                      | ML-powered rent prediction           |
 
+![fastAPI docs](
+
 📌 Example:
 
 ```bash
@@ -86,7 +88,9 @@ curl -X GET "http://localhost:8000/predict/rent?bedrooms=2&bathrooms=1&sqft=800&
 
 The pipeline is fully observable via Prometheus & Grafana.
 
-![Grafana Dashboard](docs/images/grafana-dashboard.png)
+![Prometheus Dashboard](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/prometheus%20dashboard%20screenshots/Screenshot%20(98).png)
+
+![Grafana Dashboard](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/grafana%20dashboards%20screenshots/Screenshot%20(103).png)
 
 **Key Metrics Tracked:**
 
