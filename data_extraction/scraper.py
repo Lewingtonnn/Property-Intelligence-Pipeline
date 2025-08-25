@@ -81,9 +81,14 @@ class ApartmentScraper:
                 await page.wait_for_selector('a.property-link', timeout=SCRAPER_CONFIG['TIMEOUTS']['NEXT_PAGE'])
                 current_page_number += 1
                 await page.wait_for_timeout(SCRAPER_CONFIG['DELAYS']['BETWEEN_CLICKS'])
+
         except Exception as e:
             logger.error(f"Error during multi-page scraping: {e}", exc_info=True)
         finally:
+            if not page.is_closed():
+                await page.close()
+
+        if not page.is_closed():
             await page.close()
         logger.info(f"Scraping complete. Extracted {len(property_urls_set)} unique property URLs.")
         return list(property_urls_set)

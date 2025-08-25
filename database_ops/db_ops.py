@@ -95,7 +95,7 @@ async def save_scraped_data_to_db(scraped_data: List[Dict[str, Any]]):
 
             # **CRITICAL CHANGE**: Convert the datetime to timezone-naive.
             # We're getting the current time in UTC and then stripping the timezone info.
-            now_utc_naive = datetime.utcnow()
+            now_utc_aware = datetime.now(timezone.utc)
 
             try:
                 existing_property = (await session.exec(
@@ -122,7 +122,7 @@ async def save_scraped_data_to_db(scraped_data: List[Dict[str, Any]]):
                     existing_property.property_type = prop_data.get('property_type', 'apartment')
 
                     # Update the timestamp with the new naive datetime
-                    existing_property.timestamp = now_utc_naive
+                    existing_property.timestamp = now_utc_aware
 
                     session.add(existing_property)
                     from sqlmodel import delete
@@ -148,7 +148,7 @@ async def save_scraped_data_to_db(scraped_data: List[Dict[str, Any]]):
                         property_type=prop_data.get('property_type', 'apartment'),
 
                         # Use the new naive datetime for the new property
-                        timestamp=now_utc_naive
+                        timestamp=now_utc_aware
                     )
                     session.add(new_property)
                     await session.flush()
@@ -173,7 +173,7 @@ async def save_scraped_data_to_db(scraped_data: List[Dict[str, Any]]):
                         details_link=fp_data.get('details_link'),
 
                         # Use the new naive datetime for the floor plan
-                        timestamp=now_utc_naive
+                        timestamp=now_utc_aware
                     )
                     session.add(new_floor_plan)
 

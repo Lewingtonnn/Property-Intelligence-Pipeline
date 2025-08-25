@@ -1,125 +1,200 @@
-# consumer.py
-
 import asyncio
 import logging
 import os
+import signal
+import time
+
 import aiobotocore.session
 from dotenv import load_dotenv
 from playwright.async_api import async_playwright
-import time
+from prometheus_client import start_http_server
+import psutil
+
 from data_extraction.scraper import ApartmentScraper
 from config import SCRAPER_CONFIG, PROMETHEUS_PORT
-from prometheus_client import start_http_server
 from metrics.metrics import (
     SCRAPER_SUCCESS, SCRAPER_FAILURES, LISTINGS_SCRAPED,
     SCRAPE_DURATION, MEMORY_USAGE, CPU_USAGE
 )
-import psutil
 from database_ops.db_ops import save_scraped_data_to_db
 from logging_config import setup_logging
-# Configure logging
+
+# ----------------------------------------------------
+# Bootstrap
+# ----------------------------------------------------
 setup_logging()
 logger = logging.getLogger(__name__)
-
-# Load environment variables
 load_dotenv()
-SQS_QUEUE_NAME = 'real-estate-scrape-jobs'
-SQS_QUEUE_URL = None
+
+SQS_QUEUE_NAME = os.getenv("SQS_QUEUE_NAME", "real-estate-scrape-jobs")
+AWS_REGION = os.getenv("AWS_REGION")
+if not AWS_REGION:
+    # Fail fast: region is mandatory for SQS
+    raise RuntimeError("AWS_REGION is not set in environment")
+
+# Tuning knobs (env overrideable)
+BATCH_SIZE = int(os.getenv("CONSUMER_BATCH_SIZE", "10"))  # Max 10 for SQS
+CONCURRENCY = int(os.getenv("CONSUMER_CONCURRENCY", "5"))
+LONG_POLL_SECONDS = int(os.getenv("SQS_LONG_POLL_SECONDS", "20"))  # up to 20
+POLL_IDLE_SLEEP = float(os.getenv("POLL_IDLE_SLEEP", "1.5"))  # seconds when queue empty
+ERROR_BACKOFF = float(os.getenv("ERROR_BACKOFF", "10"))  # seconds on unexpected error
+
+SQS_QUEUE_URL = None  # cached after first lookup
 
 
-async def get_queue_url_async(session):
-    """Asynchronously gets the SQS queue URL."""
+# ----------------------------------------------------
+# SQS helpers
+# ----------------------------------------------------
+async def get_queue_url_async(session: aiobotocore.session.AioSession) -> str:
+    """Resolve and cache SQS queue URL."""
     global SQS_QUEUE_URL
     if SQS_QUEUE_URL:
         return SQS_QUEUE_URL
-    async with session.create_client('sqs', region_name=os.getenv('AWS_REGION')) as sqs_client:
-        response = await sqs_client.get_queue_url(QueueName=SQS_QUEUE_NAME)
-        SQS_QUEUE_URL = response['QueueUrl']
+    async with session.create_client("sqs", region_name=AWS_REGION) as sqs_client:
+        resp = await sqs_client.get_queue_url(QueueName=SQS_QUEUE_NAME)
+        SQS_QUEUE_URL = resp["QueueUrl"]
+        logger.info(f"Resolved SQS queue URL: {SQS_QUEUE_URL}")
         return SQS_QUEUE_URL
 
 
-async def process_message(sqs_client, message):
-    """
-    Asynchronously processes a single SQS message by scraping the URL.
-    """
-    url = message['Body']
-    receipt_handle = message['ReceiptHandle']
+# ----------------------------------------------------
+# Core processing
+# ----------------------------------------------------
+async def process_message(sqs_client, message: dict, scraper: ApartmentScraper):
+    """Process a single SQS message: scrape, validate, persist, delete or leave for DLQ."""
+    url = message.get("Body")
+    receipt_handle = message.get("ReceiptHandle")
+
+    if not url or not receipt_handle:
+        logger.error("Malformed SQS message — missing Body or ReceiptHandle; leaving for DLQ.")
+        return
+
     start_time = time.time()
 
-    scraped_data = None
-    async with async_playwright() as p:
-        try:
-            async with ApartmentScraper(p) as scraper:
-                # Call the new method to scrape a single URL
-                scraped_data = await scraper.scrape_single_property_page(url)
+    try:
+        scraped_data = await scraper.scrape_single_property_page(url)
 
-                if scraped_data.get('validation_status') == 'Success':
-                    SCRAPER_SUCCESS.labels(source=SCRAPER_CONFIG['MAIN_URL']).inc()
-                    LISTINGS_SCRAPED.labels(source=SCRAPER_CONFIG['MAIN_URL']).inc()
-                    logger.info(f"Successfully scraped and validated data for {url}.")
+        # Defensive check
+        if not isinstance(scraped_data, dict):
+            raise ValueError("scrape_single_property_page must return a dict with validation_status")
 
-                    # Save data to database
-                    await save_scraped_data_to_db([scraped_data])
+        if scraped_data.get("validation_status") == "Success":
+            # Metrics
+            SCRAPER_SUCCESS.labels(source=SCRAPER_CONFIG["MAIN_URL"]).inc()
+            LISTINGS_SCRAPED.labels(source=SCRAPER_CONFIG["MAIN_URL"]).inc()
 
-                    # Delete message on success
-                    await sqs_client.delete_message(
-                        QueueUrl=SQS_QUEUE_URL,
-                        ReceiptHandle=receipt_handle
-                    )
-                    logger.info(f"Successfully deleted message for {url} from queue.")
+            logger.info(f"Scrape OK: {url} — persisting to DB")
+            await save_scraped_data_to_db([scraped_data])
+            logger.info("Persisted.")
 
-                else:
-                    SCRAPER_FAILURES.labels(source=SCRAPER_CONFIG['MAIN_URL']).inc()
-                    # Do not delete message. SQS will handle retries and DLQ.
-                    logger.error(f"Validation failed for URL: {url}. Error: {scraped_data.get('validation_status')}")
+            # Delete message on success
+            await sqs_client.delete_message(QueueUrl=SQS_QUEUE_URL, ReceiptHandle=receipt_handle)
+            logger.info(f"Deleted message for {url}")
+        else:
+            # Validation failed — don't delete. Let SQS retry / DLQ
+            SCRAPER_FAILURES.labels(source=SCRAPER_CONFIG["MAIN_URL"]).inc()
+            logger.warning(
+                "Validation failed — not deleting. url=%s reason=%s",
+                url, scraped_data.get("validation_status")
+            )
 
-        except Exception as e:
-            SCRAPER_FAILURES.labels(source=SCRAPER_CONFIG['MAIN_URL']).inc()
-            logger.critical(f"Critical error processing URL {url}: {e}", exc_info=True)
-        finally:
-            end_time = time.time()
-            duration = end_time - start_time
-            SCRAPE_DURATION.labels(source=SCRAPER_CONFIG['MAIN_URL']).observe(duration)
-            MEMORY_USAGE.set(psutil.virtual_memory().used / 1024 / 1024)
-            CPU_USAGE.set(psutil.cpu_percent())
+    except Exception as e:
+        SCRAPER_FAILURES.labels(source=SCRAPER_CONFIG["MAIN_URL"]).inc()
+        logger.exception(f"Critical error processing url={url}: {e}")
+
+    finally:
+        duration = time.time() - start_time
+        SCRAPE_DURATION.labels(source=SCRAPER_CONFIG["MAIN_URL"]).observe(duration)
+        MEMORY_USAGE.set(psutil.virtual_memory().used / 1024 / 1024)
+        CPU_USAGE.set(psutil.cpu_percent())
 
 
-async def poll_sqs_for_messages():
-    """
-    Continuously polls SQS for new messages asynchronously.
-    """
+async def poll_sqs_for_messages(scraper: ApartmentScraper, stop_event: asyncio.Event):
+    """Continuously poll SQS and process messages in batches with limited concurrency."""
     session = aiobotocore.session.get_session()
+
     try:
         await get_queue_url_async(session)
     except Exception as e:
-        logger.critical(f"Failed to get SQS Queue URL: {e}", exc_info=True)
+        logger.exception(f"Failed to get SQS queue URL: {e}")
         return
 
-    async with session.create_client('sqs', region_name=os.getenv('AWS_REGION')) as sqs_client:
-        logger.info("Starting SQS consumer...")
-        while True:
+    semaphore = asyncio.Semaphore(CONCURRENCY)
+
+    async with session.create_client("sqs", region_name=AWS_REGION) as sqs_client:
+        logger.info(
+            f"SQS consumer started — batch_size={BATCH_SIZE} concurrency={CONCURRENCY} long_poll={LONG_POLL_SECONDS}s"
+        )
+
+        while not stop_event.is_set():
             try:
-                # WaitTimeSeconds is crucial for long-polling
                 response = await sqs_client.receive_message(
                     QueueUrl=SQS_QUEUE_URL,
-                    MaxNumberOfMessages=1,
-                    WaitTimeSeconds=20
+                    MaxNumberOfMessages=min(max(BATCH_SIZE, 1), 10),
+                    WaitTimeSeconds=min(max(LONG_POLL_SECONDS, 0), 20),
                 )
 
-                if 'Messages' in response:
-                    for message in response['Messages']:
-                        # The core logic is now in a separate function
-                        await process_message(sqs_client, message)
-                else:
-                    logger.info("No messages in queue. Waiting...")
+                messages = response.get("Messages", [])
+                if not messages:
+                    # small idle sleep to avoid busy loop when queue is empty
+                    await asyncio.sleep(POLL_IDLE_SLEEP)
+                    continue
 
+                # Launch tasks up to concurrency
+                tasks = []
+                for m in messages:
+                    async def _run(msg=m):
+                        async with semaphore:
+                            await process_message(sqs_client, msg, scraper)
+                    tasks.append(asyncio.create_task(_run()))
+
+                # Wait for this batch to settle before next poll (simple model)
+                await asyncio.gather(*tasks, return_exceptions=False)
+
+            except asyncio.CancelledError:
+                logger.info("Polling cancelled — shutting down cleanly...")
+                break
             except Exception as e:
-                logger.error(f"An error occurred during polling: {e}", exc_info=True)
-                await asyncio.sleep(10)  # Wait before retrying to prevent a tight loop
+                logger.exception(f"Polling error: {e}. Backing off {ERROR_BACKOFF}s")
+                await asyncio.sleep(ERROR_BACKOFF)
+
+        logger.info("Stop signal received — exiting polling loop.")
+
+
+# ----------------------------------------------------
+# Main
+# ----------------------------------------------------
+
+
+async def main():
+    # Prometheus endpoint
+    start_http_server(PROMETHEUS_PORT)
+    logger.info(f"Prometheus HTTP server started on port {PROMETHEUS_PORT}")
+
+    stop_event = asyncio.Event()
+
+    def _handle_signal(signame):
+        logger.info(f"Received {signame} — initiating shutdown...")
+        stop_event.set()
+
+    # Register signal handlers
+    for s in (signal.SIGINT, signal.SIGTERM):
+        try:
+            signal.signal(s, lambda *_: _handle_signal(s.name))
+        except Exception:
+            pass
+
+    # CORRECT ARCHITECTURE: Launch the browser and scraper once
+    # The entire polling loop runs within this context
+    async with async_playwright() as p:
+        async with ApartmentScraper(p) as scraper:
+            await poll_sqs_for_messages(scraper, stop_event)
+
+    logger.info("Consumer process exited.")
 
 
 if __name__ == "__main__":
-    start_http_server(PROMETHEUS_PORT)
-    logger.info("Prometheus HTTP server started.")
-    asyncio.run(poll_sqs_for_messages())
-    logger.info("Consumer process exited.")
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        logger.critical(f"Unhandled critical error in main: {e}", exc_info=True)

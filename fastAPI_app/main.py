@@ -22,7 +22,7 @@ async def lifespan(app: FastAPI):
     await create_db_and_tables()
     logging.info("Application Startup: Loading pre-trained model.")
     try:
-        model.load_model('MODEL_PATH')
+        model.load_model(MODEL_PATH)
         logging.info("Model loaded successfully.")
     except FileNotFoundError:
         logging.critical("Model file not found. Prediction service will be unavailable.")

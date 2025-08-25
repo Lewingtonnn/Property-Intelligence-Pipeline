@@ -19,3 +19,295 @@ playwright._impl._errors.TargetClosedError: Target page, context or browser has 
 Call log:
   - waiting for locator("li.unitContainer").nth(12).locator(".rentLabel")
 
+2025-08-24 12:22:54,568 - __main__ - INFO - Starting the producer orchestration.
+2025-08-24 12:22:54,719 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-24 12:23:02,694 - __main__ - INFO - Successfully connected to SQS queue at https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs.
+2025-08-24 12:24:40,808 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/boston-ma/
+2025-08-24 12:24:56,001 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/boston-ma/
+2025-08-24 12:24:56,006 - data_extraction.scraper - INFO - Scraping page 1...
+2025-08-24 12:25:39,203 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:25:46,001 - data_extraction.scraper - INFO - Scraping page 2...
+2025-08-24 12:26:05,357 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:26:06,867 - data_extraction.scraper - INFO - Scraping page 3...
+2025-08-24 12:26:16,367 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:26:17,767 - data_extraction.scraper - INFO - Scraping page 4...
+2025-08-24 12:26:24,881 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:26:26,273 - data_extraction.scraper - INFO - Scraping page 5...
+2025-08-24 12:26:33,595 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:26:34,971 - data_extraction.scraper - INFO - Scraping page 6...
+2025-08-24 12:26:42,469 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:26:44,132 - data_extraction.scraper - INFO - Scraping page 7...
+2025-08-24 12:26:50,804 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:26:52,255 - data_extraction.scraper - INFO - Scraping page 8...
+2025-08-24 12:27:00,022 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:01,434 - data_extraction.scraper - INFO - Scraping page 9...
+2025-08-24 12:27:09,146 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:10,728 - data_extraction.scraper - INFO - Scraping page 10...
+2025-08-24 12:27:17,617 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:18,961 - data_extraction.scraper - INFO - Scraping page 11...
+2025-08-24 12:27:21,783 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:23,109 - data_extraction.scraper - INFO - Scraping page 12...
+2025-08-24 12:27:25,731 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:27,139 - data_extraction.scraper - INFO - Scraping page 13...
+2025-08-24 12:27:30,221 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:31,605 - data_extraction.scraper - INFO - Scraping page 14...
+2025-08-24 12:27:34,386 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:35,835 - data_extraction.scraper - INFO - Scraping page 15...
+2025-08-24 12:27:38,185 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:39,562 - data_extraction.scraper - INFO - Scraping page 16...
+2025-08-24 12:27:42,514 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:43,934 - data_extraction.scraper - INFO - Scraping page 17...
+2025-08-24 12:27:46,525 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-24 12:27:47,989 - data_extraction.scraper - INFO - Scraping page 18...
+2025-08-24 12:27:49,815 - data_extraction.scraper - INFO - No more pages found. Ending pagination.
+2025-08-24 12:27:49,994 - data_extraction.scraper - INFO - Scraping complete. Extracted 699 unique property URLs.
+2025-08-24 12:27:49,995 - __main__ - INFO - Found 699 properties. Sending 10 URLs to SQS.
+2025-08-24 12:27:51,390 - __main__ - INFO - All messages sent to SQS.
+2025-08-24 12:27:53,980 - __main__ - INFO - Producer process completed.
+2025-08-24 12:29:13,912 - __main__ - INFO - Prometheus HTTP server started.
+2025-08-24 12:29:13,939 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-24 12:29:15,803 - __main__ - INFO - Starting SQS consumer...
+2025-08-24 12:29:44,898 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-24 12:29:44,900 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-24 12:29:56,233 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-24 12:42:12,962 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/ with status: Success
+2025-08-24 12:42:13,229 - __main__ - INFO - Successfully scraped and validated data for https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/.
+2025-08-24 12:42:13,230 - root - INFO - Starting to save 1 properties to the database...
+2025-08-24 12:42:19,703 - root - INFO - Inserting new property: Axiom Apartments
+2025-08-24 12:42:20,870 - root - INFO - Successfully processed and committed property: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-24 12:42:21,895 - __main__ - INFO - Successfully deleted message for https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/ from queue.
+2025-08-24 12:42:35,638 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/105-charles-st-boston-ma-unit-1/z9md88y/
+2025-08-24 12:42:35,640 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/105-charles-st-boston-ma-unit-1/z9md88y/
+2025-08-24 12:42:43,665 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/105-charles-st-boston-ma-unit-1/z9md88y/
+2025-08-24 12:42:44,370 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-24 12:42:44,370 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/105-charles-st-boston-ma-unit-1/z9md88y/ with status: Failed: Critical Data Missing
+2025-08-24 12:42:44,396 - __main__ - ERROR - Validation failed for URL: https://www.apartments.com/105-charles-st-boston-ma-unit-1/z9md88y/. Error: Failed: Critical Data Missing
+2025-08-24 12:42:55,413 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/1986-commonwealth-ave-boston-ma-unit-4/s0m4ne6/
+2025-08-24 12:42:55,414 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1986-commonwealth-ave-boston-ma-unit-4/s0m4ne6/
+2025-08-24 12:43:00,497 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/1986-commonwealth-ave-boston-ma-unit-4/s0m4ne6/
+2025-08-24 12:43:01,305 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-24 12:43:01,306 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/1986-commonwealth-ave-boston-ma-unit-4/s0m4ne6/ with status: Failed: Critical Data Missing
+2025-08-24 12:43:01,367 - __main__ - ERROR - Validation failed for URL: https://www.apartments.com/1986-commonwealth-ave-boston-ma-unit-4/s0m4ne6/. Error: Failed: Critical Data Missing
+2025-08-24 12:43:10,896 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/173-magnolia-st-boston-ma-unit-4/bxjjpbc/
+2025-08-24 12:43:10,896 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/173-magnolia-st-boston-ma-unit-4/bxjjpbc/
+2025-08-24 12:43:15,199 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/173-magnolia-st-boston-ma-unit-4/bxjjpbc/
+2025-08-24 12:43:16,279 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-24 12:43:16,279 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/173-magnolia-st-boston-ma-unit-4/bxjjpbc/ with status: Failed: Critical Data Missing
+2025-08-24 12:43:16,296 - __main__ - ERROR - Validation failed for URL: https://www.apartments.com/173-magnolia-st-boston-ma-unit-4/bxjjpbc/. Error: Failed: Critical Data Missing
+2025-08-24 12:43:27,779 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/avalon-north-station-boston-ma/d4j183k/
+2025-08-24 12:43:27,780 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/avalon-north-station-boston-ma/d4j183k/
+2025-08-24 12:43:33,073 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/avalon-north-station-boston-ma/d4j183k/
+2025-08-24 12:56:32,944 - __main__ - INFO - Prometheus HTTP server started.
+2025-08-24 12:56:32,974 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-24 12:56:40,838 - __main__ - INFO - Starting SQS consumer...
+2025-08-24 13:08:21,765 - __main__ - CRITICAL - Critical error processing URL https://www.apartments.com/avalon-north-station-boston-ma/d4j183k/: Browser.close: Connection closed while reading from the driver
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 52, in process_message
+    async with ApartmentScraper(p) as scraper:
+               ~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\scraper.py", line 49, in __aexit__
+    await self.browser.close()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 14223, in close
+    return mapping.from_maybe_impl(await self._impl_obj.close(reason=reason))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_browser.py", line 195, in close
+    raise e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_browser.py", line 192, in close
+    await self._channel.send("close", {"reason": reason})
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Browser.close: Connection closed while reading from the driver
+2025-08-24 13:31:21,548 - __main__ - INFO - Prometheus HTTP server started.
+2025-08-24 13:31:21,651 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-24 13:31:37,552 - __main__ - INFO - Starting SQS consumer...
+2025-08-24 13:31:43,216 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:48:53,544 - __main__ - INFO - Prometheus HTTP server started.
+2025-08-25 11:48:53,650 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-25 11:48:59,164 - __main__ - INFO - Starting SQS consumer...
+2025-08-25 11:49:00,849 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:49:11,121 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:49:21,397 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:49:31,681 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:49:42,056 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:49:52,399 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:50:02,711 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:50:13,083 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:50:23,363 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:50:33,662 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:50:43,944 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:50:54,248 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:51:04,588 - __main__ - ERROR - An error occurred during polling: process_message() missing 1 required positional argument: 'scraper'
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 114, in poll_sqs_for_messages
+    await process_message(sqs_client, message)
+          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+TypeError: process_message() missing 1 required positional argument: 'scraper'
+2025-08-25 11:58:29,456 - __main__ - INFO - Prometheus HTTP server started on port 8001
+2025-08-25 11:58:41,827 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-25 11:58:44,442 - __main__ - INFO - Resolved SQS queue URL: https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs
+2025-08-25 11:58:44,454 - __main__ - INFO - SQS consumer started — batch_size=10 concurrency=5 long_poll=20s
+2025-08-25 11:58:48,142 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
+2025-08-25 11:58:48,143 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
+2025-08-25 11:58:53,041 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
+2025-08-25 12:21:16,536 - __main__ - INFO - Received SIGTERM — initiating shutdown...
+2025-08-25 12:21:17,123 - data_extraction.scraper - ERROR - Error scraping URL https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/: Locator.count: Target page, context or browser has been closed
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\scraper.py", line 103, in scrape_single_property_page
+    try:
+    
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\data_extractor.py", line 74, in extract_data
+    data['pricing_and_floor_plans'] = await self._extract_floor_plans()
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\data_extractor.py", line 114, in _extract_floor_plans
+    'sqft': await self._extract_sqft(unit_card),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\data_extractor.py", line 128, in _extract_sqft
+    for j in range(await details_spans.count()):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 16642, in count
+    return mapping.from_maybe_impl(await self._impl_obj.count())
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_locator.py", line 398, in count
+    return await self._frame._query_count(self._selector)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 128, in _query_count
+    return await self._channel.send("queryCount", {"selector": selector})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Locator.count: Target page, context or browser has been closed
+2025-08-25 12:21:17,273 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/ reason=Failed: Exception
+2025-08-25 12:21:17,304 - __main__ - INFO - Stop signal received — exiting polling loop.
+2025-08-25 12:21:17,636 - __main__ - INFO - Consumer process exited.
+2025-08-25 12:22:01,609 - __main__ - INFO - Starting the producer orchestration.
+2025-08-25 12:22:01,628 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-25 12:22:05,142 - __main__ - INFO - Successfully connected to SQS queue at https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs.
+2025-08-25 12:22:23,652 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/boston-ma/
+2025-08-25 12:22:28,729 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/boston-ma/
+2025-08-25 12:22:28,730 - data_extraction.scraper - INFO - Scraping page 1...
+2025-08-25 12:22:41,276 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:22:45,353 - data_extraction.scraper - INFO - Scraping page 2...
+2025-08-25 12:22:55,726 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:22:57,338 - data_extraction.scraper - INFO - Scraping page 3...
+2025-08-25 12:23:04,933 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:06,278 - data_extraction.scraper - INFO - Scraping page 4...
+2025-08-25 12:23:11,645 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:12,989 - data_extraction.scraper - INFO - Scraping page 5...
+2025-08-25 12:23:17,295 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:18,546 - data_extraction.scraper - INFO - Scraping page 6...
+2025-08-25 12:23:23,034 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:25,293 - data_extraction.scraper - INFO - Scraping page 7...
+2025-08-25 12:23:34,971 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:38,096 - data_extraction.scraper - INFO - Scraping page 8...
+2025-08-25 12:23:43,873 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:45,329 - data_extraction.scraper - INFO - Scraping page 9...
+2025-08-25 12:23:48,715 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:50,155 - data_extraction.scraper - INFO - Scraping page 10...
+2025-08-25 12:23:55,513 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:23:56,736 - data_extraction.scraper - INFO - Scraping page 11...
+2025-08-25 12:23:59,826 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:24:01,257 - data_extraction.scraper - INFO - Scraping page 12...
+2025-08-25 12:24:03,956 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:24:05,295 - data_extraction.scraper - INFO - Scraping page 13...
+2025-08-25 12:24:08,260 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:24:10,058 - data_extraction.scraper - INFO - Scraping page 14...
+2025-08-25 12:24:15,861 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:24:17,668 - data_extraction.scraper - INFO - Scraping page 15...
+2025-08-25 12:24:21,995 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:24:25,978 - data_extraction.scraper - INFO - Scraping page 16...
+2025-08-25 12:24:32,001 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:24:33,540 - data_extraction.scraper - INFO - Scraping page 17...
+2025-08-25 12:24:41,872 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-08-25 12:24:43,360 - data_extraction.scraper - INFO - Scraping page 18...
+2025-08-25 12:24:45,871 - data_extraction.scraper - INFO - No more pages found. Ending pagination.
+2025-08-25 12:24:46,814 - data_extraction.scraper - INFO - Scraping complete. Extracted 700 unique property URLs.
+2025-08-25 12:24:46,815 - __main__ - INFO - Found 700 properties. Sending 10 URLs to SQS.
+2025-08-25 12:24:48,149 - __main__ - INFO - All messages sent to SQS.
+2025-08-25 12:24:55,232 - __main__ - INFO - Producer process completed.
+2025-08-25 12:37:38,741 - __main__ - INFO - Prometheus HTTP server started on port 8001
+2025-08-25 12:37:54,353 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-25 12:38:01,224 - __main__ - INFO - Resolved SQS queue URL: https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs
+2025-08-25 12:38:01,237 - __main__ - INFO - SQS consumer started — batch_size=10 concurrency=5 long_poll=20s
+2025-08-25 12:38:08,720 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/
+2025-08-25 12:38:08,721 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/
+2025-08-25 12:38:09,457 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/
+2025-08-25 12:38:09,457 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/
+2025-08-25 12:38:23,395 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/one-canal-apartments-boston-ma/z17ct3x/
+2025-08-25 12:38:23,509 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/1410-columbia-south-boston-ma/y0fgdsr/
