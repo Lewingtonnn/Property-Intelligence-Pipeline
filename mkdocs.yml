@@ -1,0 +1,51 @@
+site_name: Property Intelligence Pipeline
+site_description: Enterprise-grade Real Estate Data Extraction, Analytics & Prediction
+site_author: Lewis
+site_url: https://Lewingtonnn.github.io/property-pipeline/
+
+repo_name: Lewingtonnn/property-pipeline
+repo_url: https://github.com/Lewingtonnn/property-pipeline
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+nav:
+  - Home: index.md
+  - System Architecture: architecture.md
+  - Core Components: components.md
+  - Machine Learning Pipeline: ml_pipeline.md
+  - API Reference: api_reference.md
+  - Observability: observability.md
+  - Deployment: deployment.md
+  - Operations: operations.md
+  - Roadmap: roadmap.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.emoji
+
+plugins:
+  - search
