@@ -65,6 +65,10 @@ docker-compose up --build
 
 ## 📡 API Endpoints
 
+![fastAPI screenshots](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/Screenshot%20(108).png) 
+![SCREENSHOT2](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/Screenshot%20(109).png)
+![PRECICTION ENDPOINT](https://github.com/Lewingtonnn/Property-Intelligence-Pipeline/blob/master/images/Screenshot%20(116).png)
+
 | Endpoint                             | Description                          |
 | ------------------------------------ | ------------------------------------ |
 | `/properties/`                       | List all properties                  |
@@ -73,7 +77,7 @@ docker-compose up --build
 | `/analytics/top/{x}/most-affordable` | Cheapest floor plans                 |
 | `/predict/rent`                      | ML-powered rent prediction           |
 
-![fastAPI docs](
+
 
 📌 Example:
 
