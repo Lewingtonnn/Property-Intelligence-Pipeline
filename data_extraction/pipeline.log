@@ -328,3 +328,204 @@ playwright._impl._errors.TargetClosedError: Locator.count: Target page, context 
 2025-08-25 13:05:20,367 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
 2025-08-25 13:05:20,382 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
 2025-08-25 13:05:23,656 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
+2025-08-25 13:36:51,687 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/ with status: Success
+2025-08-25 13:36:53,061 - __main__ - INFO - Scrape OK: https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/ — persisting to DB
+2025-08-25 13:36:53,128 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 13:36:55,122 - root - INFO - Updating existing property: Cambridge Ivy Inn
+2025-08-25 13:36:56,278 - root - ERROR - Integrity Error for https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+(sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "property_reviews" of relation "property" violates not-null constraint
+DETAIL:  Failing row contains (101, Cambridge Ivy Inn, https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cv..., Cambridge, MA, 02138, N/A, null, null, 1900, N/A, Cambridge, MA, 02138, Success, Apartment, ["3, 4, 5, 6, 7, 8, 9, 10, 11, 12", "Short term lease"], 2025-08-25 10:36:53.46837).
+[SQL: UPDATE property SET address=$1::VARCHAR, property_reviews=$2::FLOAT, street=$3::VARCHAR, city=$4::VARCHAR, lease_option=$5::VARCHAR, timestamp=$6::TIMESTAMP WITHOUT TIME ZONE WHERE property.id = $7::INTEGER]
+[parameters: ('Cambridge, MA, 02138', None, 'N/A', 'Cambridge', '["3, 4, 5, 6, 7, 8, 9, 10, 11, 12", "Short term lease"]', datetime.datetime(2025, 8, 25, 10, 36, 53, 468370), 101)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-08-25 13:36:56,282 - __main__ - INFO - Persisted.
+2025-08-25 13:36:58,468 - __main__ - INFO - Deleted message for https://www.apartments.com/cambridge-ivy-inn-cambridge-ma/yjy0cvv/
+2025-08-25 13:37:10,679 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-25 13:37:10,738 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-25 13:37:10,782 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/the-andi-boston-ma/v5nq3ng/
+2025-08-25 13:37:10,783 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/the-andi-boston-ma/v5nq3ng/
+2025-08-25 13:37:10,787 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/
+2025-08-25 13:37:10,787 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/
+2025-08-25 13:37:21,850 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-25 13:37:22,284 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/
+2025-08-25 13:37:22,322 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/the-andi-boston-ma/v5nq3ng/
+2025-08-25 13:37:23,096 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 13:37:23,346 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/ with status: Failed: Critical Data Missing
+2025-08-25 13:37:23,389 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/ reason=Failed: Critical Data Missing
+2025-08-25 13:50:15,580 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/ with status: Success
+2025-08-25 13:50:17,679 - __main__ - INFO - Scrape OK: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/ — persisting to DB
+2025-08-25 13:50:17,734 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 13:50:21,669 - root - INFO - Updating existing property: Axiom Apartments
+2025-08-25 13:50:26,669 - root - INFO - Successfully processed and committed property: https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-25 13:50:26,685 - __main__ - INFO - Persisted.
+2025-08-25 13:50:30,104 - __main__ - INFO - Deleted message for https://www.apartments.com/axiom-apartments-cambridge-ma/srj4z66/
+2025-08-25 14:10:29,021 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/the-andi-boston-ma/v5nq3ng/ with status: Success
+2025-08-25 14:10:30,302 - __main__ - INFO - Scrape OK: https://www.apartments.com/the-andi-boston-ma/v5nq3ng/ — persisting to DB
+2025-08-25 14:10:30,345 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 14:10:34,112 - root - INFO - Inserting new property: The Andi
+2025-08-25 14:10:37,275 - root - INFO - Successfully processed and committed property: https://www.apartments.com/the-andi-boston-ma/v5nq3ng/
+2025-08-25 14:10:37,281 - __main__ - INFO - Persisted.
+2025-08-25 14:10:39,296 - __main__ - INFO - Deleted message for https://www.apartments.com/the-andi-boston-ma/v5nq3ng/
+2025-08-25 14:10:51,477 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/fenway-parkside-boston-ma/w88trdl/
+2025-08-25 14:10:51,570 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/fenway-parkside-boston-ma/w88trdl/
+2025-08-25 14:10:51,685 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/the-adams-at-hancock-village-chestnut-hill-ma/1wnl587/
+2025-08-25 14:10:51,685 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/the-adams-at-hancock-village-chestnut-hill-ma/1wnl587/
+2025-08-25 14:10:51,700 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:10:51,700 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:10:51,738 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:10:51,738 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:11:09,967 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:11:11,456 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/the-adams-at-hancock-village-chestnut-hill-ma/1wnl587/
+2025-08-25 14:11:11,999 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/fenway-parkside-boston-ma/w88trdl/
+2025-08-25 14:11:12,067 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:11:16,313 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:11:16,313 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/ with status: Failed: Critical Data Missing
+2025-08-25 14:11:16,434 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/ reason=Failed: Critical Data Missing
+2025-08-25 14:11:16,460 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:11:16,461 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/ with status: Failed: Critical Data Missing
+2025-08-25 14:11:16,748 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/ reason=Failed: Critical Data Missing
+2025-08-25 14:17:41,329 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/fenway-parkside-boston-ma/w88trdl/ with status: Success
+2025-08-25 14:17:41,386 - __main__ - INFO - Scrape OK: https://www.apartments.com/fenway-parkside-boston-ma/w88trdl/ — persisting to DB
+2025-08-25 14:17:41,477 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 14:17:42,439 - root - INFO - Inserting new property: Fenway Parkside
+2025-08-25 14:17:43,652 - root - INFO - Successfully processed and committed property: https://www.apartments.com/fenway-parkside-boston-ma/w88trdl/
+2025-08-25 14:17:43,655 - __main__ - INFO - Persisted.
+2025-08-25 14:17:44,885 - __main__ - INFO - Deleted message for https://www.apartments.com/fenway-parkside-boston-ma/w88trdl/
+2025-08-25 14:42:25,605 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/the-adams-at-hancock-village-chestnut-hill-ma/1wnl587/ with status: Success
+2025-08-25 14:42:27,601 - __main__ - INFO - Scrape OK: https://www.apartments.com/the-adams-at-hancock-village-chestnut-hill-ma/1wnl587/ — persisting to DB
+2025-08-25 14:42:27,610 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 14:42:28,820 - root - INFO - Updating existing property: The Adams at Hancock Village
+2025-08-25 14:42:30,856 - root - INFO - Successfully processed and committed property: https://www.apartments.com/the-adams-at-hancock-village-chestnut-hill-ma/1wnl587/
+2025-08-25 14:42:30,858 - __main__ - INFO - Persisted.
+2025-08-25 14:42:32,740 - __main__ - INFO - Deleted message for https://www.apartments.com/the-adams-at-hancock-village-chestnut-hill-ma/1wnl587/
+2025-08-25 14:43:06,963 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/beacon-park-apartments-brookline-ma/6pnb3wv/
+2025-08-25 14:43:07,052 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/beacon-park-apartments-brookline-ma/6pnb3wv/
+2025-08-25 14:43:07,162 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:43:07,162 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:43:31,044 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:43:31,082 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/beacon-park-apartments-brookline-ma/6pnb3wv/
+2025-08-25 14:43:34,727 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:43:34,727 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/ with status: Failed: Critical Data Missing
+2025-08-25 14:43:34,754 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/ reason=Failed: Critical Data Missing
+2025-08-25 14:53:04,889 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/beacon-park-apartments-brookline-ma/6pnb3wv/ with status: Success
+2025-08-25 14:53:04,980 - __main__ - INFO - Scrape OK: https://www.apartments.com/beacon-park-apartments-brookline-ma/6pnb3wv/ — persisting to DB
+2025-08-25 14:53:05,040 - root - INFO - Starting to save 1 properties to the database...
+2025-08-25 14:53:05,863 - root - INFO - Inserting new property: Beacon Park Apartments
+2025-08-25 14:53:16,534 - root - INFO - Successfully processed and committed property: https://www.apartments.com/beacon-park-apartments-brookline-ma/6pnb3wv/
+2025-08-25 14:53:16,538 - __main__ - INFO - Persisted.
+2025-08-25 14:53:18,229 - __main__ - INFO - Deleted message for https://www.apartments.com/beacon-park-apartments-brookline-ma/6pnb3wv/
+2025-08-25 14:53:43,584 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:53:43,587 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:53:49,430 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:53:49,431 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:54:25,075 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:54:29,977 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:54:32,829 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:54:32,829 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/ with status: Failed: Critical Data Missing
+2025-08-25 14:54:32,839 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/ reason=Failed: Critical Data Missing
+2025-08-25 14:54:33,502 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:54:33,502 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/ with status: Failed: Critical Data Missing
+2025-08-25 14:54:33,532 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/ reason=Failed: Critical Data Missing
+2025-08-25 14:54:35,763 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:54:35,764 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:54:40,884 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:54:42,065 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:54:42,065 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/ with status: Failed: Critical Data Missing
+2025-08-25 14:54:42,087 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/ reason=Failed: Critical Data Missing
+2025-08-25 14:54:44,737 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:54:44,737 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:54:44,758 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:54:44,759 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:54:48,523 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:54:50,209 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:54:52,409 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:54:52,410 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/ with status: Failed: Critical Data Missing
+2025-08-25 14:54:52,746 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/ reason=Failed: Critical Data Missing
+2025-08-25 14:54:53,587 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:54:53,588 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/ with status: Failed: Critical Data Missing
+2025-08-25 14:54:53,614 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/ reason=Failed: Critical Data Missing
+2025-08-25 14:54:55,171 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/
+2025-08-25 14:54:55,171 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/
+2025-08-25 14:54:56,996 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/
+2025-08-25 14:54:57,342 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:54:57,377 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/ with status: Failed: Critical Data Missing
+2025-08-25 14:54:57,416 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/75-desoto-rd-boston-ma-unit-1/7wt9x9w/ reason=Failed: Critical Data Missing
+2025-08-25 14:54:59,054 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:54:59,054 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:54:59,300 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:54:59,301 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:55:04,693 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:55:06,906 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:55:07,332 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:55:07,332 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/ with status: Failed: Critical Data Missing
+2025-08-25 14:55:07,358 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/ reason=Failed: Critical Data Missing
+2025-08-25 14:55:07,976 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:55:07,977 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/ with status: Failed: Critical Data Missing
+2025-08-25 14:55:08,451 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/ reason=Failed: Critical Data Missing
+2025-08-25 14:55:10,356 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:55:10,357 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:55:14,225 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/
+2025-08-25 14:55:16,554 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:55:16,555 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/ with status: Failed: Critical Data Missing
+2025-08-25 14:55:16,582 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/157-e-cottage-st-boston-ma/0b2qfp2/ reason=Failed: Critical Data Missing
+2025-08-25 14:55:18,425 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:55:18,435 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:55:18,549 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:55:18,550 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:55:22,730 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/
+2025-08-25 14:55:23,454 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/
+2025-08-25 14:55:23,605 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:55:23,605 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/ with status: Failed: Critical Data Missing
+2025-08-25 14:55:23,623 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/57-salem-st-boston-ma/pbltjyt/ reason=Failed: Critical Data Missing
+2025-08-25 14:55:24,563 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:55:24,564 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/ with status: Failed: Critical Data Missing
+2025-08-25 14:55:24,581 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/8-chauncey-st-watertown-ma/kcg96sc/ reason=Failed: Critical Data Missing
+2025-08-25 14:55:29,417 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:55:29,418 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:55:29,427 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:55:29,427 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:55:32,951 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/
+2025-08-25 14:55:33,154 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/
+2025-08-25 14:55:34,303 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:55:34,303 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/ with status: Failed: Critical Data Missing
+2025-08-25 14:55:34,308 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-25 14:55:34,309 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/ with status: Failed: Critical Data Missing
+2025-08-25 14:55:34,515 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/509-beacon-st-boston-ma/4w55dll/ reason=Failed: Critical Data Missing
+2025-08-25 14:55:34,649 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/50-kinnaird-st-cambridge-ma-unit-fl2-id1154/387t2md/ reason=Failed: Critical Data Missing
+2025-08-25 15:57:36,561 - __main__ - INFO - Received SIGTERM — initiating shutdown...
+2025-08-25 15:57:43,827 - __main__ - INFO - Stop signal received — exiting polling loop.
+2025-08-25 15:57:50,955 - __main__ - CRITICAL - Unhandled critical error in main: Browser.close: Connection closed while reading from the driver
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 198, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 190, in main
+    async with ApartmentScraper(p) as scraper:
+               ~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\scraper.py", line 49, in __aexit__
+    await self.browser.close()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 14223, in close
+    return mapping.from_maybe_impl(await self._impl_obj.close(reason=reason))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_browser.py", line 195, in close
+    raise e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_browser.py", line 192, in close
+    await self._channel.send("close", {"reason": reason})
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Browser.close: Connection closed while reading from the driver
