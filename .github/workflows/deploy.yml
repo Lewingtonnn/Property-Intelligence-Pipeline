@@ -28,4 +28,4 @@ jobs:
       run: pytest
 
     - name: Build Docker image
-      run: docker build . --file Dockerfile --https://github.com/Lewingtonnn/project_based_learning:$(echo $GITHUB_SHA | cut -c1-8)
+      run: docker build . --file Dockerfile --https://github.com/Lewingtonnn/Property-Intelligence-Pipeline:$(echo $GITHUB_SHA | cut -c1-8)
