@@ -2552,3 +2552,79 @@ Traceback (most recent call last):
   File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
     raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
 Exception: Connection.init: Connection closed while reading from the driver
+2025-08-28 11:52:47,118 - __main__ - INFO - Prometheus HTTP server started on port 8001
+2025-08-28 11:53:34,788 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-08-28 11:53:40,145 - __main__ - INFO - Resolved SQS queue URL: https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs
+2025-08-28 11:53:40,254 - __main__ - INFO - SQS consumer started — batch_size=10 concurrency=10 long_poll=5s
+2025-08-28 11:53:43,468 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/
+2025-08-28 11:53:43,747 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/
+2025-08-28 11:53:43,841 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 11:53:43,842 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 11:53:44,079 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/1572-commonwealth-ave-boston-ma/bvs3c19/
+2025-08-28 11:53:44,079 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1572-commonwealth-ave-boston-ma/bvs3c19/
+2025-08-28 11:53:44,477 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/827-centre-st-boston-ma/rrtdzn3/
+2025-08-28 11:53:44,477 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/827-centre-st-boston-ma/rrtdzn3/
+2025-08-28 11:53:45,159 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/101-chelsea-st-boston-ma/62qlpws/
+2025-08-28 11:53:45,160 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/101-chelsea-st-boston-ma/62qlpws/
+2025-08-28 11:53:46,351 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/3-morton-pl-boston-ma/st26zs4/
+2025-08-28 11:53:46,351 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/3-morton-pl-boston-ma/st26zs4/
+2025-08-28 11:53:47,925 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/17-burney-boston-ma/50wr5zn/
+2025-08-28 11:53:47,925 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/17-burney-boston-ma/50wr5zn/
+2025-08-28 11:53:50,390 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/
+2025-08-28 11:53:50,391 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/
+2025-08-28 11:53:56,540 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/212-stuart-boston-ma/fme6gft/
+2025-08-28 11:53:56,541 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/212-stuart-boston-ma/fme6gft/
+2025-08-28 11:54:05,884 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/hub50house-boston-ma/h2x8sm0/
+2025-08-28 11:54:05,885 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/hub50house-boston-ma/h2x8sm0/
+2025-08-28 11:54:12,130 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/3-morton-pl-boston-ma/st26zs4/
+2025-08-28 11:54:12,704 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/827-centre-st-boston-ma/rrtdzn3/
+2025-08-28 11:54:12,971 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/1572-commonwealth-ave-boston-ma/bvs3c19/
+2025-08-28 11:54:18,377 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 11:54:18,378 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/3-morton-pl-boston-ma/st26zs4/ with status: Failed: Critical Data Missing
+2025-08-28 11:54:19,245 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 11:54:19,245 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/1572-commonwealth-ave-boston-ma/bvs3c19/ with status: Failed: Critical Data Missing
+2025-08-28 11:54:19,250 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 11:54:19,250 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/827-centre-st-boston-ma/rrtdzn3/ with status: Failed: Critical Data Missing
+2025-08-28 11:54:24,064 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/3-morton-pl-boston-ma/st26zs4/ reason=Failed: Critical Data Missing
+2025-08-28 11:54:25,040 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/1572-commonwealth-ave-boston-ma/bvs3c19/ reason=Failed: Critical Data Missing
+2025-08-28 11:54:25,299 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/827-centre-st-boston-ma/rrtdzn3/ reason=Failed: Critical Data Missing
+2025-08-28 11:54:45,916 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/
+2025-08-28 11:54:45,931 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 11:54:47,227 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/101-chelsea-st-boston-ma/62qlpws/
+2025-08-28 11:54:49,946 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/17-burney-boston-ma/50wr5zn/
+2025-08-28 11:54:52,454 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/
+2025-08-28 11:54:58,574 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/212-stuart-boston-ma/fme6gft/
+2025-08-28 11:55:07,948 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/hub50house-boston-ma/h2x8sm0/
+2025-08-28 11:55:46,693 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/hub50house-boston-ma/h2x8sm0/
+2025-08-28 11:55:47,931 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/
+2025-08-28 11:55:47,947 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 11:55:49,246 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/101-chelsea-st-boston-ma/62qlpws/
+2025-08-28 11:55:52,160 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/17-burney-boston-ma/50wr5zn/
+2025-08-28 11:55:54,522 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/
+2025-08-28 11:56:00,636 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/212-stuart-boston-ma/fme6gft/
+2025-08-28 11:56:41,399 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/101-chelsea-st-boston-ma/62qlpws/
+2025-08-28 11:56:41,404 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/
+2025-08-28 11:56:42,236 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 11:56:42,481 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/17-burney-boston-ma/50wr5zn/
+2025-08-28 11:56:42,749 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/
+2025-08-28 11:56:42,754 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 11:56:42,755 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/101-chelsea-st-boston-ma/62qlpws/ with status: Failed: Critical Data Missing
+2025-08-28 11:56:43,689 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/212-stuart-boston-ma/fme6gft/
+2025-08-28 11:56:44,281 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/101-chelsea-st-boston-ma/62qlpws/ reason=Failed: Critical Data Missing
+2025-08-28 11:56:45,138 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 11:56:45,139 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/ with status: Failed: Critical Data Missing
+2025-08-28 11:56:45,649 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/ reason=Failed: Critical Data Missing
+2025-08-28 12:00:48,394 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/17-burney-boston-ma/50wr5zn/ with status: Success
+2025-08-28 12:00:48,642 - __main__ - INFO - Scrape OK: https://www.apartments.com/17-burney-boston-ma/50wr5zn/ — persisting to DB
+2025-08-28 12:00:48,643 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 12:00:58,606 - root - INFO - Inserting new property: 17 Burney
+2025-08-28 12:01:00,767 - root - INFO - Successfully processed and committed property: https://www.apartments.com/17-burney-boston-ma/50wr5zn/
+2025-08-28 12:01:00,769 - __main__ - INFO - Persisted.
+2025-08-28 12:01:03,111 - __main__ - INFO - Deleted message for https://www.apartments.com/17-burney-boston-ma/50wr5zn/
+2025-08-28 12:11:56,581 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/212-stuart-boston-ma/fme6gft/ with status: Success
+2025-08-28 12:11:56,598 - __main__ - INFO - Scrape OK: https://www.apartments.com/212-stuart-boston-ma/fme6gft/ — persisting to DB
+2025-08-28 12:11:56,599 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 12:11:57,074 - root - INFO - Inserting new property: 212 Stuart
+2025-08-28 12:11:58,040 - root - INFO - Successfully processed and committed property: https://www.apartments.com/212-stuart-boston-ma/fme6gft/
+2025-08-28 12:11:58,041 - __main__ - INFO - Persisted.
+2025-08-28 12:11:59,035 - __main__ - INFO - Deleted message for https://www.apartments.com/212-stuart-boston-ma/fme6gft/
