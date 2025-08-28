@@ -34,10 +34,10 @@ if not AWS_REGION:
 
 # Tuning knobs (env overrideable)
 BATCH_SIZE = int(os.getenv("CONSUMER_BATCH_SIZE", "10"))  # Max 10 for SQS
-CONCURRENCY = int(os.getenv("CONSUMER_CONCURRENCY", "5"))
-LONG_POLL_SECONDS = int(os.getenv("SQS_LONG_POLL_SECONDS", "20"))  # up to 20
-POLL_IDLE_SLEEP = float(os.getenv("POLL_IDLE_SLEEP", "1.5"))  # seconds when queue empty
-ERROR_BACKOFF = float(os.getenv("ERROR_BACKOFF", "10"))  # seconds on unexpected error
+CONCURRENCY = int(os.getenv("CONSUMER_CONCURRENCY", "10"))
+LONG_POLL_SECONDS = int(os.getenv("SQS_LONG_POLL_SECONDS", "5"))  # up to 20
+POLL_IDLE_SLEEP = float(os.getenv("POLL_IDLE_SLEEP", "0.5"))  # seconds when queue empty
+ERROR_BACKOFF = float(os.getenv("ERROR_BACKOFF", "1"))  # seconds on unexpected error
 
 SQS_QUEUE_URL = None  # cached after first lookup
 
@@ -99,7 +99,7 @@ async def process_message(sqs_client, message: dict, scraper: ApartmentScraper):
             )
 
     except Exception as e:
-        SCRAPER_FAILURES.labels(source=SCRAPER_CONFIG["MAIN_URL"]).inc()
+        #SCRAPER_FAILURES.labels(source=SCRAPER_CONFIG["MAIN_URL"]).inc()
         logger.exception(f"Critical error processing url={url}: {e}")
 
     finally:

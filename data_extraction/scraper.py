@@ -50,8 +50,8 @@ class ApartmentScraper:
 
     async def scrape_all_pages(self, main_url: str) -> List[str]:
         """Navigates pagination and collects all property URLs."""
-        # ... (This method remains unchanged) ...
-        property_urls_set = set()
+
+        property_urls_set = []
         current_page_number = 1
         page = await self.context.new_page()
         try:
@@ -71,7 +71,7 @@ class ApartmentScraper:
                     if href:
                         if not href.startswith('http'):
                             href = page.url.rstrip('/') + '/' + href.lstrip('/')
-                        property_urls_set.add(href)
+                        property_urls_set.append(href)
                 next_page_button = page.locator('a.next')
                 if not await next_page_button.is_visible() or await next_page_button.is_disabled():
                     logger.info("No more pages found. Ending pagination.")

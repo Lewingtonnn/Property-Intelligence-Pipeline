@@ -4,7 +4,7 @@ PROMETHEUS_PORT = 8001
 
 SCRAPER_CONFIG = {
     'MAIN_URL': 'https://www.apartments.com/boston-ma/',
-    'PROPERTIES_TO_SCRAPE_LIMIT': 10,
+    'PROPERTIES_TO_SCRAPE_LIMIT': 10000,
     'MAX_CONCURRENT_PAGES': 10,
     'HEADLESS_MODE': True,
     'LOG_FILE_PATH': 'DataExtraction.log',
