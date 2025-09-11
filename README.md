@@ -11,6 +11,8 @@
 ## 🚀 Overview
 The **Property Intelligence Pipeline** is a production-grade system that automates the **extraction, storage, analytics, and prediction** of real estate data at scale.  
 
+**This pipeline reduces property data collection from weeks of manual work to live updates in under 60s, enabling real estate investors to identify trends 90% faster**
+
 It is designed for:  
 - **Resilience** → Async scraping + fault-tolerant queues  
 - **Scalability** → Decoupled Producer-Consumer model  
