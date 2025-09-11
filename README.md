@@ -134,6 +134,7 @@ MIT License – free to use, modify, and distribute.
 ---
 
 ### ✨ Designed for Production. Built for Scale.
+### Built by Fluxvyn Data Lab — Data in Motion, Intelligence in Action.
 
 
 
