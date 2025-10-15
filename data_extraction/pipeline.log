@@ -2628,3 +2628,585 @@ Exception: Connection.init: Connection closed while reading from the driver
 2025-08-28 12:11:58,040 - root - INFO - Successfully processed and committed property: https://www.apartments.com/212-stuart-boston-ma/fme6gft/
 2025-08-28 12:11:58,041 - __main__ - INFO - Persisted.
 2025-08-28 12:11:59,035 - __main__ - INFO - Deleted message for https://www.apartments.com/212-stuart-boston-ma/fme6gft/
+2025-08-28 12:24:55,495 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/ with status: Success
+2025-08-28 12:24:55,515 - __main__ - INFO - Scrape OK: https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/ — persisting to DB
+2025-08-28 12:24:55,516 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 12:24:55,529 - root - ERROR - Error saving property https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/ to database: (sqlalchemy.dialects.postgresql.asyncpg.InterfaceError) <class 'asyncpg.exceptions._base.InterfaceError'>: connection is closed
+[SQL: SELECT property.id, property.title, property.property_link, property.address, property.listing_verification, property.property_reviews, property.price, property.year_built, property.street, property.city, property.state, property.zip_code, property.validation_status, property.property_type, property.lease_option, property.timestamp 
+FROM property 
+WHERE property.property_link = $1::VARCHAR]
+[parameters: ('https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/',)]
+(Background on this error at: https://sqlalche.me/e/20/rvf5)
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 838, in _start_transaction
+    self._transaction = self._connection.transaction(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        isolation=self.isolation_level,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        readonly=self.readonly,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+        deferrable=self.deferrable,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\asyncpg\connection.py", line 302, in transaction
+    self._check_open()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\asyncpg\connection.py", line 1596, in _check_open
+    raise exceptions.InterfaceError('connection is closed')
+asyncpg.exceptions._base.InterfaceError: connection is closed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1961, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 944, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 580, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 515, in _prepare_and_execute
+    await adapt_connection._start_transaction()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 845, in _start_transaction
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 792, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.InterfaceError: <class 'asyncpg.exceptions._base.InterfaceError'>: connection is closed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\database_ops\db_ops.py", line 101, in save_scraped_data_to_db
+    existing_property = (await session.exec(
+                         ^^^^^^^^^^^^^^^^^^^
+        select(Property).where(Property.property_link == property_link))).first()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlmodel\ext\asyncio\session.py", line 81, in exec
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlmodel\orm\session.py", line 66, in exec
+    results = super().execute(
+        statement,
+    ...<4 lines>...
+        _add_event=_add_event,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1413, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1840, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1980, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 2349, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\base.py", line 1961, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\engine\default.py", line 944, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 580, in execute
+    self._adapt_connection.await_(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._prepare_and_execute(operation, parameters)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 515, in _prepare_and_execute
+    await adapt_connection._start_transaction()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 845, in _start_transaction
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 792, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.InterfaceError: (sqlalchemy.dialects.postgresql.asyncpg.InterfaceError) <class 'asyncpg.exceptions._base.InterfaceError'>: connection is closed
+[SQL: SELECT property.id, property.title, property.property_link, property.address, property.listing_verification, property.property_reviews, property.price, property.year_built, property.street, property.city, property.state, property.zip_code, property.validation_status, property.property_type, property.lease_option, property.timestamp 
+FROM property 
+WHERE property.property_link = $1::VARCHAR]
+[parameters: ('https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/',)]
+(Background on this error at: https://sqlalche.me/e/20/rvf5)
+2025-08-28 12:24:56,395 - __main__ - INFO - Persisted.
+2025-08-28 12:24:57,434 - __main__ - INFO - Deleted message for https://www.apartments.com/886-896-huntington-avenue-boston-ma/ehzhz5n/
+2025-08-28 12:41:43,154 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/hub50house-boston-ma/h2x8sm0/ with status: Success
+2025-08-28 12:41:43,165 - __main__ - INFO - Scrape OK: https://www.apartments.com/hub50house-boston-ma/h2x8sm0/ — persisting to DB
+2025-08-28 12:41:43,165 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 12:41:47,345 - root - INFO - Inserting new property: Hub50House
+2025-08-28 12:41:48,633 - root - INFO - Successfully processed and committed property: https://www.apartments.com/hub50house-boston-ma/h2x8sm0/
+2025-08-28 12:41:48,635 - __main__ - INFO - Persisted.
+2025-08-28 12:41:49,582 - __main__ - INFO - Deleted message for https://www.apartments.com/hub50house-boston-ma/h2x8sm0/
+2025-08-28 12:42:10,072 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/ with status: Success
+2025-08-28 12:42:10,081 - __main__ - INFO - Scrape OK: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/ — persisting to DB
+2025-08-28 12:42:10,081 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 12:42:10,557 - root - INFO - Inserting new property: Portside at East Pier
+2025-08-28 12:42:11,300 - root - INFO - Successfully processed and committed property: https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/
+2025-08-28 12:42:11,302 - __main__ - INFO - Persisted.
+2025-08-28 12:42:12,289 - __main__ - INFO - Deleted message for https://www.apartments.com/portside-at-east-pier-east-boston-ma/3sj3kmg/
+2025-08-28 12:42:16,441 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 12:42:16,450 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 12:42:16,635 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/pacific-street-apartments-cambridge-ma/w63dpck/
+2025-08-28 12:42:16,635 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/pacific-street-apartments-cambridge-ma/w63dpck/
+2025-08-28 12:42:16,684 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/96-hammond-st-boston-ma/rde1je3/
+2025-08-28 12:42:16,685 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/96-hammond-st-boston-ma/rde1je3/
+2025-08-28 12:42:16,691 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/presidential-point-quincy-ma/7le51vx/
+2025-08-28 12:42:16,692 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/presidential-point-quincy-ma/7le51vx/
+2025-08-28 12:42:16,699 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/871-washington-st-boston-ma-unit-1/r6v6kv2/
+2025-08-28 12:42:16,699 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/871-washington-st-boston-ma-unit-1/r6v6kv2/
+2025-08-28 12:42:16,706 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/furnished-private-bedroom-in-east-boston-boston-ma/xzwndrq/
+2025-08-28 12:42:16,706 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/furnished-private-bedroom-in-east-boston-boston-ma/xzwndrq/
+2025-08-28 12:42:16,712 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/335-baker-st-boston-ma/j7gyz05/
+2025-08-28 12:42:16,713 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/335-baker-st-boston-ma/j7gyz05/
+2025-08-28 12:42:16,719 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/340-harvard-st-cambridge-ma-unit-b1/9s95hv4/
+2025-08-28 12:42:16,719 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/340-harvard-st-cambridge-ma-unit-b1/9s95hv4/
+2025-08-28 12:42:16,726 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/hancock-village-chestnut-hill-ma/thtxnyc/
+2025-08-28 12:42:16,726 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/hancock-village-chestnut-hill-ma/thtxnyc/
+2025-08-28 12:42:16,732 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/25-wabon-st-boston-ma-unit-1/dmge95k/
+2025-08-28 12:42:16,732 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/25-wabon-st-boston-ma-unit-1/dmge95k/
+2025-08-28 12:43:04,354 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/
+2025-08-28 12:43:04,410 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/furnished-private-bedroom-in-east-boston-boston-ma/xzwndrq/
+2025-08-28 12:43:04,416 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/hancock-village-chestnut-hill-ma/thtxnyc/
+2025-08-28 12:43:04,422 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/340-harvard-st-cambridge-ma-unit-b1/9s95hv4/
+2025-08-28 12:43:04,429 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/pacific-street-apartments-cambridge-ma/w63dpck/
+2025-08-28 12:43:04,491 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/25-wabon-st-boston-ma-unit-1/dmge95k/
+2025-08-28 12:43:04,501 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/871-washington-st-boston-ma-unit-1/r6v6kv2/
+2025-08-28 12:43:04,772 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/presidential-point-quincy-ma/7le51vx/
+2025-08-28 12:43:04,777 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/335-baker-st-boston-ma/j7gyz05/
+2025-08-28 12:43:04,782 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/96-hammond-st-boston-ma/rde1je3/
+2025-08-28 12:43:13,500 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 12:43:13,501 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/340-harvard-st-cambridge-ma-unit-b1/9s95hv4/ with status: Failed: Critical Data Missing
+2025-08-28 12:43:13,591 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 12:43:13,592 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/25-wabon-st-boston-ma-unit-1/dmge95k/ with status: Failed: Critical Data Missing
+2025-08-28 12:43:13,624 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 12:43:13,625 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/furnished-private-bedroom-in-east-boston-boston-ma/xzwndrq/ with status: Failed: Critical Data Missing
+2025-08-28 12:43:13,631 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 12:43:13,631 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/871-washington-st-boston-ma-unit-1/r6v6kv2/ with status: Failed: Critical Data Missing
+2025-08-28 12:43:13,657 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 12:43:13,658 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/335-baker-st-boston-ma/j7gyz05/ with status: Failed: Critical Data Missing
+2025-08-28 12:43:13,661 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 12:43:13,662 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/96-hammond-st-boston-ma/rde1je3/ with status: Failed: Critical Data Missing
+2025-08-28 12:43:13,686 - data_extractor - WARNING - Standard title not found. Skipping detailed extraction.
+2025-08-28 12:43:13,686 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/ with status: Failed: Critical Data Missing
+2025-08-28 12:43:16,411 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/340-harvard-st-cambridge-ma-unit-b1/9s95hv4/ reason=Failed: Critical Data Missing
+2025-08-28 12:43:16,723 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/25-wabon-st-boston-ma-unit-1/dmge95k/ reason=Failed: Critical Data Missing
+2025-08-28 12:43:16,913 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/furnished-private-bedroom-in-east-boston-boston-ma/xzwndrq/ reason=Failed: Critical Data Missing
+2025-08-28 12:43:16,991 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/871-washington-st-boston-ma-unit-1/r6v6kv2/ reason=Failed: Critical Data Missing
+2025-08-28 12:43:17,329 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/335-baker-st-boston-ma/j7gyz05/ reason=Failed: Critical Data Missing
+2025-08-28 12:43:17,375 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/96-hammond-st-boston-ma/rde1je3/ reason=Failed: Critical Data Missing
+2025-08-28 12:43:17,443 - __main__ - WARNING - Validation failed — not deleting. url=https://www.apartments.com/1110-commonwealth-ave-boston-ma-unit-603/xrnb07p/ reason=Failed: Critical Data Missing
+2025-08-28 12:46:51,247 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/pacific-street-apartments-cambridge-ma/w63dpck/ with status: Success
+2025-08-28 12:46:51,256 - __main__ - INFO - Scrape OK: https://www.apartments.com/pacific-street-apartments-cambridge-ma/w63dpck/ — persisting to DB
+2025-08-28 12:46:51,256 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 12:46:51,733 - root - INFO - Inserting new property: Pacific Street Apartments
+2025-08-28 12:46:52,722 - root - INFO - Successfully processed and committed property: https://www.apartments.com/pacific-street-apartments-cambridge-ma/w63dpck/
+2025-08-28 12:46:52,723 - __main__ - INFO - Persisted.
+2025-08-28 12:46:53,682 - __main__ - INFO - Deleted message for https://www.apartments.com/pacific-street-apartments-cambridge-ma/w63dpck/
+2025-08-28 12:49:51,928 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/presidential-point-quincy-ma/7le51vx/ with status: Success
+2025-08-28 12:49:51,935 - __main__ - INFO - Scrape OK: https://www.apartments.com/presidential-point-quincy-ma/7le51vx/ — persisting to DB
+2025-08-28 12:49:51,935 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 12:49:52,414 - root - INFO - Inserting new property: Presidential Point
+2025-08-28 12:49:53,390 - root - INFO - Successfully processed and committed property: https://www.apartments.com/presidential-point-quincy-ma/7le51vx/
+2025-08-28 12:49:53,392 - __main__ - INFO - Persisted.
+2025-08-28 12:49:54,318 - __main__ - INFO - Deleted message for https://www.apartments.com/presidential-point-quincy-ma/7le51vx/
+2025-08-28 13:28:36,159 - data_extraction.scraper - INFO - Finished detail scrape for URL: https://www.apartments.com/hancock-village-chestnut-hill-ma/thtxnyc/ with status: Success
+2025-08-28 13:28:36,168 - __main__ - INFO - Scrape OK: https://www.apartments.com/hancock-village-chestnut-hill-ma/thtxnyc/ — persisting to DB
+2025-08-28 13:28:36,168 - root - INFO - Starting to save 1 properties to the database...
+2025-08-28 13:28:36,675 - root - INFO - Inserting new property: Hancock Village
+2025-08-28 13:28:38,893 - root - INFO - Successfully processed and committed property: https://www.apartments.com/hancock-village-chestnut-hill-ma/thtxnyc/
+2025-08-28 13:28:38,896 - __main__ - INFO - Persisted.
+2025-08-28 13:28:39,895 - __main__ - INFO - Deleted message for https://www.apartments.com/hancock-village-chestnut-hill-ma/thtxnyc/
+2025-08-28 13:28:57,905 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/ink-block-boston-ma/b92qt39/
+2025-08-28 13:28:57,906 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/ink-block-boston-ma/b92qt39/
+2025-08-28 13:28:57,913 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/12-14-marcella-st-unit-2a-cambridge-ma-unit-2a/zgkqb4z/
+2025-08-28 13:28:57,913 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/12-14-marcella-st-unit-2a-cambridge-ma-unit-2a/zgkqb4z/
+2025-08-28 13:28:57,919 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/60-brainerd-rd-boston-ma-unit-fl2-id792/1hz3y34/
+2025-08-28 13:28:57,919 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/60-brainerd-rd-boston-ma-unit-fl2-id792/1hz3y34/
+2025-08-28 13:28:57,929 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/parmelee-court-boston-ma/hwnd553/
+2025-08-28 13:28:57,929 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/parmelee-court-boston-ma/hwnd553/
+2025-08-28 13:28:57,942 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/10-selkirk-rd-boston-ma-unit-2/gmx411y/
+2025-08-28 13:28:57,943 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/10-selkirk-rd-boston-ma-unit-2/gmx411y/
+2025-08-28 13:28:57,948 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/10-scottfield-rd-boston-ma-unit-22/xkxbhnq/
+2025-08-28 13:28:57,948 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/10-scottfield-rd-boston-ma-unit-22/xkxbhnq/
+2025-08-28 13:28:57,957 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/78-sawyer-ave-boston-ma-unit-3/ygqkcjv/
+2025-08-28 13:28:57,957 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/78-sawyer-ave-boston-ma-unit-3/ygqkcjv/
+2025-08-28 13:28:57,966 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/14-winter-st-boston-ma/5mg495q/
+2025-08-28 13:28:57,966 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/14-winter-st-boston-ma/5mg495q/
+2025-08-28 13:28:57,970 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/stony-brook-village-boston-ma/x54fysn/
+2025-08-28 13:28:57,971 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/stony-brook-village-boston-ma/x54fysn/
+2025-08-28 13:28:57,978 - data_extraction.scraper - INFO - Starting detail scrape for URL: https://www.apartments.com/38-newton-st-boston-ma/mxbpxmk/
+2025-08-28 13:28:57,979 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/38-newton-st-boston-ma/mxbpxmk/
+2025-08-28 13:30:00,158 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/ink-block-boston-ma/b92qt39/
+2025-08-28 13:30:00,177 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/12-14-marcella-st-unit-2a-cambridge-ma-unit-2a/zgkqb4z/
+2025-08-28 13:30:00,188 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/60-brainerd-rd-boston-ma-unit-fl2-id792/1hz3y34/
+2025-08-28 13:30:00,233 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/parmelee-court-boston-ma/hwnd553/
+2025-08-28 13:30:00,257 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/10-selkirk-rd-boston-ma-unit-2/gmx411y/
+2025-08-28 13:30:00,262 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/10-scottfield-rd-boston-ma-unit-22/xkxbhnq/
+2025-08-28 13:30:00,277 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/78-sawyer-ave-boston-ma-unit-3/ygqkcjv/
+2025-08-28 13:30:00,290 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/14-winter-st-boston-ma/5mg495q/
+2025-08-28 13:30:00,316 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/stony-brook-village-boston-ma/x54fysn/
+2025-08-28 13:30:00,421 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/38-newton-st-boston-ma/mxbpxmk/
+2025-08-28 13:30:54,324 - __main__ - INFO - Received SIGTERM — initiating shutdown...
+2025-10-09 20:58:12,184 - __main__ - INFO - Starting the producer orchestration.
+2025-10-09 20:58:12,245 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-10-09 20:58:23,106 - __main__ - INFO - Successfully connected to SQS queue at https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs.
+2025-10-09 20:59:15,690 - __main__ - INFO - Prometheus HTTP server started on port 8001
+2025-10-09 21:00:15,977 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-10-09 21:00:20,371 - __main__ - INFO - Resolved SQS queue URL: https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs
+2025-10-09 21:00:20,390 - __main__ - INFO - SQS consumer started — batch_size=10 concurrency=10 long_poll=5s
+2025-10-09 21:10:17,927 - asyncio - ERROR - Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+2025-10-09 21:10:30,908 - __main__ - INFO - Starting the producer orchestration.
+2025-10-09 21:10:30,961 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-10-09 21:10:34,231 - __main__ - INFO - Successfully connected to SQS queue at https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs.
+2025-10-09 21:10:48,894 - __main__ - INFO - Extracting property URLs...
+2025-10-09 21:10:52,438 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/boston-ma/
+2025-10-09 21:10:57,145 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/boston-ma/
+2025-10-09 21:10:57,146 - data_extraction.scraper - INFO - Scraping page 1...
+2025-10-09 21:11:12,906 - asyncio - ERROR - Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed\nCall log:\n  - waiting for locator("a.property-link") to be visible\n')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("a.property-link") to be visible
+
+2025-10-09 21:11:15,448 - __main__ - INFO - Starting the producer orchestration.
+2025-10-09 21:11:15,464 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-10-09 21:11:17,267 - __main__ - INFO - Successfully connected to SQS queue at https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs.
+2025-10-09 21:11:21,656 - __main__ - INFO - Extracting property URLs...
+2025-10-09 21:11:23,521 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/boston-ma/
+2025-10-09 21:11:26,121 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/boston-ma/
+2025-10-09 21:11:26,122 - data_extraction.scraper - INFO - Scraping page 1...
+2025-10-09 21:11:30,200 - __main__ - INFO - Received SIGTERM — initiating shutdown...
+2025-10-09 21:11:34,226 - __main__ - INFO - Stop signal received — exiting polling loop.
+2025-10-09 21:11:34,232 - __main__ - CRITICAL - Unhandled critical error in main: Browser.close: Connection closed while reading from the driver
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 198, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 190, in main
+    async with ApartmentScraper(p) as scraper:
+               ~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\scraper.py", line 49, in __aexit__
+    await self.browser.close()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 14223, in close
+    return mapping.from_maybe_impl(await self._impl_obj.close(reason=reason))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_browser.py", line 195, in close
+    raise e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_browser.py", line 192, in close
+    await self._channel.send("close", {"reason": reason})
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Browser.close: Connection closed while reading from the driver
+2025-10-09 21:11:41,949 - __main__ - INFO - Prometheus HTTP server started on port 8001
+2025-10-09 21:11:44,324 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-10-09 21:11:46,749 - __main__ - INFO - Resolved SQS queue URL: https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs
+2025-10-09 21:11:46,766 - __main__ - INFO - SQS consumer started — batch_size=10 concurrency=10 long_poll=5s
+2025-10-09 21:11:56,156 - data_extraction.scraper - WARNING - No property links found on page 1, ending pagination.
+2025-10-09 21:11:56,224 - data_extraction.scraper - INFO - Scraping complete. Extracted 0 unique property URLs.
+2025-10-09 21:11:56,225 - __main__ - INFO - Found 0 properties. Sending 0 URLs to SQS.
+2025-10-09 21:11:56,226 - __main__ - INFO - All messages sent to SQS.
+2025-10-09 21:11:57,652 - __main__ - INFO - Producer process completed.
+2025-10-09 22:46:27,204 - __main__ - ERROR - Polling error: Could not connect to the endpoint URL: "https://sqs.us-east-1.amazonaws.com/". Backing off 1.0s
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\resolver.py", line 117, in resolve
+    resp = await self._resolver.getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+aiodns.error.DNSError: (12, 'Timeout while contacting DNS servers')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\connector.py", line 1532, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\connector.py", line 1148, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\connector.py", line 1179, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\resolver.py", line 126, in resolve
+    raise OSError(None, msg) from exc
+OSError: [Errno None] Timeout while contacting DNS servers
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\httpsession.py", line 223, in send
+    response = await session.request(
+               ^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\client.py", line 770, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\client.py", line 725, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\connector.py", line 642, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\connector.py", line 1209, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiohttp\connector.py", line 1538, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host sqs.us-east-1.amazonaws.com:443 ssl:default [Timeout while contacting DNS servers]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\consumer.py", line 131, in poll_sqs_for_messages
+    response = await sqs_client.receive_message(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\context.py", line 36, in wrapper
+    return await func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\client.py", line 406, in _make_api_call
+    http, parsed_response = await self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+        operation_model, request_dict, request_context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\client.py", line 432, in _make_request
+    return await self._endpoint.make_request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        operation_model, request_dict
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\endpoint.py", line 120, in _send_request
+    while await self._needs_retry(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    ):
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\endpoint.py", line 280, in _needs_retry
+    responses = await self._event_emitter.emit(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\hooks.py", line 68, in _emit
+    response = await resolve_awaitable(handler(**kwargs))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\retryhandler.py", line 107, in _call
+    if await resolve_awaitable(self._checker(**checker_kwargs)):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\retryhandler.py", line 126, in _call
+    should_retry = await self._should_retry(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+        attempt_number, response, caught_exception
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\retryhandler.py", line 165, in _should_retry
+    return await resolve_awaitable(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+        self._checker(attempt_number, response, caught_exception)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\_helpers.py", line 6, in resolve_awaitable
+    return await obj
+           ^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\retryhandler.py", line 174, in _call
+    checker(attempt_number, response, caught_exception)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\retryhandler.py", line 247, in __call__
+    return self._check_caught_exception(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        attempt_number, caught_exception
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\retryhandler.py", line 416, in _check_caught_exception
+    raise caught_exception
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\endpoint.py", line 201, in _do_get_response
+    http_response = await self._send(request)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\endpoint.py", line 303, in _send
+    return await self.http_session.send(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\aiobotocore\httpsession.py", line 277, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "https://sqs.us-east-1.amazonaws.com/"
+2025-10-10 09:45:39,324 - __main__ - INFO - Received SIGTERM — initiating shutdown...
+2025-10-10 09:45:45,905 - __main__ - INFO - Starting the producer orchestration.
+2025-10-10 09:45:46,018 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-10-10 09:45:53,434 - __main__ - INFO - Successfully connected to SQS queue at https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs.
+2025-10-10 09:47:09,818 - __main__ - INFO - Extracting property URLs...
+2025-10-10 09:47:11,676 - data_extraction.scraper - INFO - Attempting navigation to: https://www.apartments.com/boston-ma/
+2025-10-10 09:47:15,501 - data_extraction.scraper - INFO - Successfully navigated to: https://www.apartments.com/boston-ma/
+2025-10-10 09:47:15,502 - data_extraction.scraper - INFO - Scraping page 1...
+2025-10-10 09:47:57,660 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:48:00,210 - data_extraction.scraper - INFO - Scraping page 2...
+2025-10-10 09:48:13,697 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:48:15,371 - data_extraction.scraper - INFO - Scraping page 3...
+2025-10-10 09:48:39,307 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:48:41,780 - data_extraction.scraper - INFO - Scraping page 4...
+2025-10-10 09:48:49,067 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:48:50,834 - data_extraction.scraper - INFO - Scraping page 5...
+2025-10-10 09:48:58,460 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:48:59,892 - data_extraction.scraper - INFO - Scraping page 6...
+2025-10-10 09:49:08,561 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:49:10,032 - data_extraction.scraper - INFO - Scraping page 7...
+2025-10-10 09:49:20,169 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:49:22,028 - data_extraction.scraper - INFO - Scraping page 8...
+2025-10-10 09:49:31,443 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:49:33,276 - data_extraction.scraper - INFO - Scraping page 9...
+2025-10-10 09:49:41,675 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:49:43,107 - data_extraction.scraper - INFO - Scraping page 10...
+2025-10-10 09:49:54,198 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:49:55,573 - data_extraction.scraper - INFO - Scraping page 11...
+2025-10-10 09:50:03,150 - data_extraction.scraper - INFO - Clicking the 'next' page button...
+2025-10-10 09:50:33,427 - data_extraction.scraper - ERROR - Error during multi-page scraping: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("a.property-link") to be visible
+    6 × locator resolved to 160 elements. Proceeding with the first one: <a class="property-link" aria-label="656 Saratoga Street, Boston, MA" href="https://www.apartments.com/656-saratoga-street-boston-ma/lxrtcdf/">…</a>
+    46 × locator resolved to 85 elements. Proceeding with the first one: <a class="property-link" aria-label="805 Mount Auburn St, Watertown, MA" href="https://www.apartments.com/805-mount-auburn-st-watertown-ma/lygr8vd/">…</a>
+Traceback (most recent call last):
+  File "C:\Users\Administrator\Real-Estate-Data-Pipeline\data_extraction\scraper.py", line 81, in scrape_all_pages
+    await page.wait_for_selector('a.property-link', timeout=SCRAPER_CONFIG['TIMEOUTS']['NEXT_PAGE'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8180, in wait_for_selector
+    await self._impl_obj.wait_for_selector(
+        selector=selector, timeout=timeout, state=state, strict=strict
+    )
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 425, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 323, in wait_for_selector
+    await self._channel.send("waitForSelector", locals_to_params(locals()))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 61, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 528, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("a.property-link") to be visible
+    6 × locator resolved to 160 elements. Proceeding with the first one: <a class="property-link" aria-label="656 Saratoga Street, Boston, MA" href="https://www.apartments.com/656-saratoga-street-boston-ma/lxrtcdf/">…</a>
+    46 × locator resolved to 85 elements. Proceeding with the first one: <a class="property-link" aria-label="805 Mount Auburn St, Watertown, MA" href="https://www.apartments.com/805-mount-auburn-st-watertown-ma/lygr8vd/">…</a>
+
+2025-10-10 09:50:33,476 - data_extraction.scraper - INFO - Scraping complete. Extracted 1677 unique property URLs.
+2025-10-10 09:50:33,477 - __main__ - INFO - Found 1677 properties. Sending 1677 URLs to SQS.
+2025-10-10 09:51:18,646 - __main__ - INFO - All messages sent to SQS.
+2025-10-10 09:51:19,780 - __main__ - INFO - Producer process completed.

@@ -39,6 +39,7 @@ async def run_producer():
         async with async_playwright() as p:
             async with ApartmentScraper(p) as scraper:
                 # Step 1: Extract all property URLs
+                logger.info("Extracting property URLs...")
                 property_urls = await scraper.scrape_all_pages(SCRAPER_CONFIG['MAIN_URL'])
 
                 # Step 2: Limit properties and send URLs to SQS
