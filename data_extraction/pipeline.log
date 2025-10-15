@@ -3210,3 +3210,7 @@ Call log:
 2025-10-10 09:50:33,477 - __main__ - INFO - Found 1677 properties. Sending 1677 URLs to SQS.
 2025-10-10 09:51:18,646 - __main__ - INFO - All messages sent to SQS.
 2025-10-10 09:51:19,780 - __main__ - INFO - Producer process completed.
+2025-10-15 19:08:56,385 - __main__ - INFO - Prometheus HTTP server started on port 8001
+2025-10-15 19:09:26,888 - aiobotocore.credentials - INFO - Found credentials in environment variables.
+2025-10-15 19:09:29,980 - __main__ - INFO - Resolved SQS queue URL: https://sqs.us-east-1.amazonaws.com/675076709743/real-estate-scrape-jobs
+2025-10-15 19:09:30,054 - __main__ - INFO - SQS consumer started — batch_size=10 concurrency=10 long_poll=5s
